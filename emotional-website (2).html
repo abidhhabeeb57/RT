@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Message</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e6e9f0 0%, #eef1f5 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Courier New', monospace;
+        }
+        .envelope {
+            width: 300px;
+            height: 200px;
+            background-color: white;
+            border: 2px solid #3B82F6;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .envelope:hover {
+            transform: scale(1.05);
+        }
+        .envelope-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .click-text {
+            font-size: 1rem;
+            margin-top: 10px;
+            color: #3B82F6;
+        }
+        .blue-rose {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope" onclick="openLetter()">
+        <div class="envelope-content">
+            <div class="blue-rose">🌹</div>
+            👻
+            <div class="click-text">Click Here</div>
+            💙
+        </div>
+    </div>
+
+    <div id="letterContent" class="hidden fixed inset-0 bg-white flex items-center justify-center">
+        <div class="text-center p-8">
+            <h1 id="mainMessage" class="text-4xl mb-6 text-pink-600">I miss you</h1>
+            <button id="startButton" class="bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600 transition">
+                Click Here
+            </button>
+
+            <div id="responseSection" class="hidden mt-6">
+                <p class="text-2xl mb-4 text-gray-700">I miss you. Do you miss me?</p>
+                <div class="space-x-4">
+                    <button id="yesButton" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600">
+                        Yes
+                    </button>
+                    <button id="noButton" class="bg-red-500 text-white px-6 py-3 rounded-full hover:bg-red-600">
+                        No
+                    </button>
+                </div>
+            </div>
+
+            <div id="finalMessage" class="hidden mt-6 text-2xl text-gray-700">
+                Okay
+            </div>
+        </div>
+    </div>
+
+    <div id="videoContainer" class="hidden fixed inset-0 bg-black flex justify-center items-center">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/JpK7AY0Rj5U?autoplay=1" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+        </iframe>
+    </div>
+
+    <script>
+        function openLetter() {
+            document.querySelector('.envelope').style.display = 'none';
+            document.getElementById('letterContent').classList.remove('hidden');
+        }
+
+        document.getElementById('startButton').addEventListener('click', function() {
+            document.getElementById('mainMessage').style.display = 'none';
+            document.getElementById('startButton').style.display = 'none';
+            document.getElementById('responseSection').classList.remove('hidden');
+        });
+
+        document.getElementById('yesButton').addEventListener('click', function() {
+            window.location.href = 'https://wa.me/918075101530?text=I%20miss%20you';
+        });
+
+        document.getElementById('noButton').addEventListener('click', function() {
+            document.getElementById('responseSection').style.display = 'none';
+            document.getElementById('videoContainer').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
